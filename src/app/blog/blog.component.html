@@ -1,0 +1,18 @@
+<h1>Blog</h1>
+<section>
+
+  <div>
+    <textarea rows="10" cols="80" #blog placeholder="enter a blog"></textarea>
+  </div>
+  <div>
+    <button (click)="submit(blog)">submit</button>
+  </div>
+
+  <ul *ngFor="let blog of blogs">
+    <li>
+      {{blog.date | date}} - {{blog.post}}
+      <button (click)="remove(blog.id)">remove</button>
+    </li>
+  </ul>
+
+</section>

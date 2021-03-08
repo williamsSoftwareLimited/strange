@@ -1,0 +1,19 @@
+<h1>Articles</h1>
+
+<section class="flex-container">
+
+  <div class="menuItems">
+    <ul *ngFor="let menuItem of menuItems">
+      <li><a (click)="menuClicked(menuItem)" [class.selected]="currentArticle===menuItem.name" [title]="menuItem.description">{{ menuItem.name }}</a></li>
+    </ul>
+  </div>
+
+  <div class="article">
+    <app-article [article]="article | async"></app-article>
+  </div>
+
+  <div class="articleMenu">
+
+  </div>
+
+</section>

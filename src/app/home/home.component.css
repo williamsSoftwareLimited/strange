@@ -1,0 +1,36 @@
+.home-grid {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 10em;
+  grid-template-areas:
+    'top top top'
+    'left main right'
+    'bottom bottom bottom';
+}
+
+[class^='grid-item'] {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.grid-item-top {
+  grid-area: top;
+}
+
+.grid-item-left {
+  grid-area: left;
+}
+
+.grid-item-main {
+  grid-area: main;
+}
+
+.grid-item-right {
+  grid-area: right;
+}
+
+.grid-item-bottom  {
+  grid-area: bottom ;
+}

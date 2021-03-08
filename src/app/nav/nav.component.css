@@ -1,0 +1,28 @@
+.menuItem {
+  text-decoration: none;
+  margin-right: 1.2em;
+  color: whitesmoke;
+  padding:0.5em;
+  cursor: pointer;
+  transition: box-shadow 0.5s ease 0.2s;
+}
+.menuItem.codebehind {
+  font-size: 1.6em;
+  margin-right: 3em;
+  padding: 0.25em;
+  color: #FF9900;
+}
+.menuItem.codebehind > span {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.menuItem:hover {
+  color: #f7e9d5;
+  box-shadow: inset 0 -2px 0 #f7e9d5;
+}
+.menuItem.chosen {
+  box-shadow: inset 0 -2px 0 #f7e9d5;
+}
+.menuItem.chosen:hover {
+  box-shadow: inset -0 -3px 0 red;
+}

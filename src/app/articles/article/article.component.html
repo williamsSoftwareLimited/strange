@@ -1,0 +1,25 @@
+<article *ngIf="article">
+
+  <h2>{{article.heading}}</h2>
+
+  <section>
+    {{article.intro}}
+  </section>
+
+  <section class="article">
+    <div *ngFor="let paragraph of article.paragraphs">
+      <h3 [innerHtml]="paragraph.header"></h3>
+      <p>{{paragraph.para}}</p>
+    </div>
+  </section>
+
+  <section>
+    <h3 *ngIf="article">Conclusion</h3>
+    {{article.conclusion}}
+  </section>
+
+</article>
+
+
+
+

@@ -1,0 +1,41 @@
+section.flex-container {
+  display: flex;
+}
+
+.menuItems {
+  flex: 1 0 fit-content;
+  min-width: 200px;
+}
+.menuItems a {
+  text-decoration: none;
+  color: rgb(218, 248, 47);
+  cursor: pointer;
+}
+
+.menuItems a:hover {
+  text-decoration: underline;
+  color: rgb(250, 241, 109);
+}
+
+.menuItems a.selected {
+  text-decoration: underline;
+  color: rgb(169, 202, 245);
+}
+
+.menuItems a.selected:hover {
+  text-decoration: underline;
+  color: rgb(209, 226, 248);
+}
+
+.menuItems ul {
+  list-style-type: none;
+}
+
+.article{
+  flex: 4 0 fit-content;
+}
+
+.articleMenu{
+  flex: 1 0 fit-content;
+}
+
