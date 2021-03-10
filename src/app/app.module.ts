@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DesignPatternsComponent } from './design-patterns/design-patterns.component';
-import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
@@ -16,6 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { blogReducer } from './reducers/blog.reducer';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -33,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    HttpClientModule,
     StoreModule.forRoot({ blogs: blogReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

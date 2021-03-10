@@ -1,7 +1,4 @@
-<blockquote class="quote">
-  May the seeds on my loins be fruitful in the belly of your woman.
-  May the seeds on my loins be fruitful in the belly of your woman.
-  May the seeds on my loins be fruitful in the belly of your woman.
-  May the seeds on my loins be fruitful in the belly of your woman.
-  May the seeds on my loins be fruitful in the belly of your woman.
+<blockquote class="quote" *ngIf="(quote$ | async) as quote">
+  <div>{{ quote.statement }}</div>
+  <div class="person">{{ quote.person }}</div>
 </blockquote>
