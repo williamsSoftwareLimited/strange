@@ -15,7 +15,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { blogReducer } from './reducers/blog.reducer';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TouchToDragComponent } from './quote/touch-to-drag.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastInterceptor } from './interceptors/toast.interceptor';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     SliderComponent,
     SlideComponent,
-    QuoteComponent
+    QuoteComponent,
+    TouchToDragComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +41,22 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forRoot({ blogs: blogReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      //logOnly: environment.production,
+      logOnly: environment.production,
     }),
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      resetTimeoutOnDuplicate: true,
+      timeOut: 30000
+    })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ToastInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

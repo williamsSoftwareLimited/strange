@@ -1,3 +1,5 @@
+<app-touch-to-drag (refresh)="quoteService.refresh$.next(0)"></app-touch-to-drag>
+
 <blockquote class="quote" *ngIf="(quote$ | async) as quote">
   <div>{{ quote.statement }}</div>
   <div class="person">{{ quote.person }}</div>

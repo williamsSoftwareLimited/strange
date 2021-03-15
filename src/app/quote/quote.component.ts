@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { QuoteService } from '../services/quote.service';
 
@@ -8,13 +9,21 @@ import { QuoteService } from '../services/quote.service';
   styleUrls: ['./quote.component.css'],
   providers:[ QuoteService]
 })
-export class QuoteComponent implements OnInit {
+export class QuoteComponent implements OnInit, OnDestroy {
+  subscription: Subscription
 
-  constructor(private quoteService: QuoteService) { }
+  refreshTimer$ = timer(0, 120000)
+
+  quote$ = this.quoteService.quote$ // this.quoteService.getTestQuote()
+
+  constructor(public quoteService: QuoteService) { }
 
   ngOnInit(): void {
+    this.subscription = this.refreshTimer$.subscribe(this.quoteService.refresh$)
   }
 
-  quote$ = this.quoteService.getTestQuote()
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
 
 }
