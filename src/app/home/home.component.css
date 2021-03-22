@@ -10,6 +10,12 @@
   font-size: 30px;
 }
 
+@media (max-width: 720px) {
+  .home-quote {
+    font-size: 18px;
+  }
+}
+
 .home-slider {
   display: flex;
   align-items: center;
