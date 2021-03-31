@@ -13,16 +13,15 @@ export class QuoteService {
     { statement: 'Right, Left. Which way to go. Up or down?', person: 'd. i. rections'},
     { statement: 'I ask a simple question, nothing could be more complex.', person: 'genius'},
     { statement: 'ok so you want me baby.', person: 'depeche mood'},
-    { statement: 'ok so you want me baby.', person: 'depeche mood'},
+    { statement: 'abrakadabrah.', person: 'poof'},
   ]
   index = 0
-  loadQuote$;
+  loadQuote$
   constructor(private http: HttpClient) {
-    console.log(environment.production)
     if (environment.production===true) this.loadQuote$ = this.http.get("quotes/quote_json.php")
     else
       this.loadQuote$ = of(this.quotes).pipe(
-        delay(1000),
+        delay(2000),
         map( quotes => quotes[this.index] ),
         tap( () => this.index = this.index>=this.quotes.length-1 ? 0 : this.index+1 ))
 
@@ -30,8 +29,7 @@ export class QuoteService {
       catchError(error => {
         console.error(error)
         return EMPTY
-      }),
-      share()
+      })
     )
   }
 
@@ -39,5 +37,4 @@ export class QuoteService {
 
   quote$ = this.refresh$.pipe(
     exhaustMap( () => this.loadQuote$) )
-
 }

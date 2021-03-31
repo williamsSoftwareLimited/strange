@@ -20,7 +20,7 @@ export class TouchToDragComponent implements OnInit{
   moveHome$ = interval(0, animationFrameScheduler).pipe(
     takeUntil(this.returnTimer$),
     map(() => this._pos -= 20),
-    endWith(-70)
+    endWith(-200)
   );
 
   touchDrag$ = this.touchStart$.pipe(
@@ -30,7 +30,6 @@ export class TouchToDragComponent implements OnInit{
           takeUntil(this.touchEnd$),
           tap(p => this._pos = p)
         ),
-        this.touchEnd$,
         this.moveHome$
     )),
     tap( y => {
